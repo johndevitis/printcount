@@ -1,11 +1,11 @@
-function printcount(i, n)
+function thecount = printcount(i, n)
 % PRINTCOUNT Print progress count to command window
 %
-%  USAGE: printcount(i, n)
+%  USAGE: thecount = printcount(i, n)
 % __________________________________________________________________________
 %  INPUTS
-%	i: current count   
-%	n: total count
+% 	i: current count   
+% 	n: total count
 % __________________________________________________________________________
 %  EXAMPLE USAGE
 %   myarray = 1:42; 
@@ -21,10 +21,13 @@ function printcount(i, n)
 %	Created:  2015-03-17
 %	Email:    spunt@caltech.edu
 % __________________________________________________________________________
-if nargin < 2, disp('USAGE: printcount(i, n)'); return; end
+if nargin < 2, disp('USAGE: thecount = printcount(i, n)'); return; end
 nd  = length(num2str(n)); 
 f   = sprintf('%%0%dd', nd); 
-b   = repmat('\b', 1, nd*2+1);
-if i>1, fprintf([b f '/' f], i, n);
-else    fprintf([f '/' f], i, n); 
+if nargout, thecount = sprintf([f '/' f], i, n); return; end
+if i>1
+    fprintf([repmat('\b', 1, nd*2+1) f '/' f], i, n);
+else
+    fprintf([f '/' f], i, n);
 end
+
