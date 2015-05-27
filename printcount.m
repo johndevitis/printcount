@@ -30,4 +30,5 @@ if i>1
 else
     fprintf([f '/' f], i, n);
 end
+if i==n, fprintf('\n'); end
 
